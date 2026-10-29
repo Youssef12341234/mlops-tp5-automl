@@ -1,5 +1,7 @@
 """Entraine la reference Random Forest du TP2 et l'enregistre dans MLflow."""
-import time\nimport sys\nfrom pathlib import Path
+import time
+import sys
+from pathlib import Path
 import joblib
 import mlflow
 import mlflow.sklearn
@@ -7,7 +9,9 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
-\nsys.stdout.reconfigure(encoding="utf-8", errors="replace")\n
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 df = pd.read_csv("data/transactions.csv")
 X, y = df.drop(columns="fraude"), df["fraude"]
 Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, random_state=42)
@@ -28,4 +32,5 @@ with mlflow.start_run(run_name="manuel-rf-500-16"):
         registered_model_name="fraude-manuel",
         skops_trusted_types=["sklearn.tree._tree.Tree"])
 print("enregistre : fraude-manuel, version", info.registered_model_version)
+
 
