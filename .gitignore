@@ -1,0 +1,12 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+# Donnees et artefacts locaux (regenerables ou suivis dans MLflow)
+data/
+models/
+mlflow.db
+mlartifacts/
+reports/flaml_tp5.log
+reports/latences.json
