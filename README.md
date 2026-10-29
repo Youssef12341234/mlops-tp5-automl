@@ -114,8 +114,9 @@ git status --short
 Une fois le depot GitHub vide cree pour le compte voulu :
 
 ```powershell
-git remote add origin https://github.com/VOTRE_COMPTE/mlops-tp5-automl.git
+git remote add origin https://github.com/Youssef12341234/mlops-tp5-automl.git
 git push -u origin main
 ```
 
 Le depot doit contenir `.gitignore`, `requirements.txt`, `donnees.py`, `src/` et `reports/tp5_comparaison.md`.
+

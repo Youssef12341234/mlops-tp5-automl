@@ -2,7 +2,7 @@
 
 **Nom et prenom :** Youssef Hachimi Alaoui  
 **Filiere :** 5IASD  
-**Groupe :** a completer
+**Groupe :** G6
 
 ## Synthese des resultats
 
@@ -52,3 +52,4 @@ FLAML peut choisir des familles et objets Python differents ; le TP utilise donc
 ## Conclusion
 
 Les mesures de ce poste favorisent FLAML/XGBoost pour une API ou la latence et la taille de l'artefact comptent. La difference de F1 est de 0.0087 en faveur du Random Forest manuel. La validation du rappel, de la precision et de l'impact des faux negatifs reste indispensable pour une decision metier de fraude.
+
