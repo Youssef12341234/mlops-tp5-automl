@@ -1,20 +1,24 @@
 # Modele manuel ou modele AutoML ? (TP05)
 
-Mesures a renseigner apres l'execution locale. Ne pas remplacer les valeurs manquantes par des estimations.
+Mesures relevees le 29 octobre 2026 sur le meme jeu de test (1 250 transactions) et les deux services locaux.
 
 | Critere | Manuel (RF 500/16) | AutoML (FLAML 90 s) |
 |---|---:|---:|
-| Famille de modele | RandomForestClassifier | A relever dans le run MLflow |
-| F1 sur le jeu de test | A mesurer | A mesurer |
-| Temps de recherche / entrainement (s) | A mesurer | A relever dans MLflow |
-| Temps humain estime (min) | A estimer | A estimer |
-| Latence mediane (ms), mesure 1 | A mesurer | A mesurer |
-| Latence p95 (ms), mesure 1 | A mesurer | A mesurer |
-| Latence mediane (ms), mesure 2 | A mesurer | A mesurer |
-| Latence p95 (ms), mesure 2 | A mesurer | A mesurer |
-| Taille du fichier local (Mo) | A mesurer | A mesurer |
-| Explicabilite | Importance des variables ; 500 arbres, profondeur max. 16 | Depend de la famille ; importance des variables si disponible |
+| Famille de modele | RandomForestClassifier | XGBoost (XGBClassifier) |
+| F1 sur le jeu de test | 0.8669 | 0.8582 |
+| Temps de recherche / entrainement machine | 2.2 s | 90.3 s |
+| Temps humain estime | Environ 45 min au TP2 (estimation) | Environ 2 min, lancement compris (estimation) |
+| Latence mediane (ms), mesure 1 | 92.9 | 16.4 |
+| Latence p95 (ms), mesure 1 | 141.1 | 29.4 |
+| Latence mediane (ms), mesure 2 | 92.2 | 18.0 |
+| Latence p95 (ms), mesure 2 | 125.5 | 37.8 |
+| Taille du fichier local (Mo) | 13.37 | 0.29 |
+| Explicabilite | Importance des variables ; 500 arbres, profondeur max. 16 | Importance des variables XGBoost ; 333 estimateurs, max_leaves=4 |
 
 ## Decision (5 lignes)
 
-A completer apres les mesures : choisir le modele qui satisfait le niveau de F1 necessaire tout en comparant p95, taille du fichier et capacite a expliquer les predictions. Indiquer les compromis observes et justifier le choix a partir des chiffres du tableau.
+Pour ce service, je retiens le modele FLAML/XGBoost : son F1 (0.8582) reste proche du Random Forest manuel (0.8669).
+Sa latence mediane mesuree est d'environ 16-18 ms, contre 92-93 ms pour le modele manuel.
+Son p95 reste entre 29 et 38 ms, contre 126-141 ms, et son fichier pese 0.29 Mo contre 13.37 Mo.
+Ces gains de latence et de taille sont importants pour servir davantage de requetes avec moins de ressources.
+Avant une mise en production reelle, je validerais aussi le rappel et les faux negatifs avec le metier.
