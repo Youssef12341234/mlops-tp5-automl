@@ -1,6 +1,5 @@
 """Entraine FLAML, exporte le meilleur estimateur et l'enregistre dans MLflow."""
-import time
-from pathlib import Path
+import time\nimport sys\nfrom pathlib import Path
 import joblib
 import mlflow
 import mlflow.sklearn
@@ -8,7 +7,7 @@ import pandas as pd
 from flaml import AutoML
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
-
+\nsys.stdout.reconfigure(encoding="utf-8", errors="replace")\n
 BUDGET = 90
 TRACKING_URI = "http://127.0.0.1:5000"
 EXPERIMENT = "tp5-automl-deploiement"
@@ -44,3 +43,4 @@ with mlflow.start_run(run_name=f"automl-{BUDGET}s"):
         modele, name="model", input_example=Xte.head(3),
         registered_model_name="fraude-automl", serialization_format="cloudpickle")
 print("enregistre : fraude-automl, version", info.registered_model_version)
+

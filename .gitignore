@@ -10,3 +10,5 @@ mlflow.db
 mlartifacts/
 reports/flaml_tp5.log
 reports/latences.json
+
+reports/mlflow-server.*.log

@@ -1,6 +1,5 @@
 """Plan B scikit-learn si FLAML ne peut pas etre installe (annexe A du TP)."""
-import time
-from pathlib import Path
+import time\nimport sys\nfrom pathlib import Path
 import joblib
 import mlflow
 import mlflow.sklearn
@@ -8,7 +7,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, HistGradientBoostingClassifier
 from sklearn.metrics import f1_score
 from sklearn.model_selection import RandomizedSearchCV, train_test_split
-from sklearn.pipeline import Pipeline
+\nsys.stdout.reconfigure(encoding="utf-8", errors="replace")\nfrom sklearn.pipeline import Pipeline
 
 df = pd.read_csv("data/transactions.csv")
 X, y = df.drop(columns="fraude"), df["fraude"]
@@ -38,3 +37,4 @@ with mlflow.start_run(run_name="sklearn-recherche-20"):
                                     registered_model_name="fraude-automl",
                                     serialization_format="cloudpickle")
 print("enregistre : fraude-automl, version", info.registered_model_version)
+
